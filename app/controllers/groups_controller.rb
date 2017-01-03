@@ -4,9 +4,10 @@ before_action :find_group_and_check_permission, only: [:edit, :update, :destroy]
   def index
     @groups = Group.all
   end
+  
   def show
   @group = Group.find(params[:id])
-  @posts = @group.posts
+  @posts = @group.posts.order("created_at DESC")
   end
 
   def edit
